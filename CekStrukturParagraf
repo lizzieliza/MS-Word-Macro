@@ -1,0 +1,16 @@
+Sub CekStrukturParagraf()
+    Dim doc As Document
+    Dim para As Paragraph
+    
+    ' Atur dokumen aktif
+    Set doc = ActiveDocument
+    
+    ' Loop melalui setiap paragraf
+    For i = 1 To doc.Paragraphs.Count
+        Set para = doc.Paragraphs(i)
+        MsgBox "Nomor Paragraf: " & para.range.Paragraphs(1).range.ListFormat.ListString & vbCrLf & _
+                "Teks Paragraf: " & para.range.Text, vbInformation, "Cek Struktur Paragraf"
+    Next i
+End Sub
+
+
