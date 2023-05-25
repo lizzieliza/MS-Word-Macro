@@ -1,0 +1,40 @@
+Sub HapusDoubleLineBreak()
+    Dim doc As Document
+    Dim selection As range
+    Dim i As Integer
+    
+    Set doc = ActiveDocument
+    Set selection = doc.Content
+    
+    For i = 1 To 5 ' Lakukan pengulangan sebanyak 5 kali
+        selection.Find.ClearFormatting
+        selection.Find.replacement.ClearFormatting
+    
+        ' Cari double line break
+        With selection.Find
+            .Text = "^p^p" ' Cari double line break
+            .replacement.Text = "^p" ' Ganti dengan single line break
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = False
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+    
+        ' Ganti double line break dengan single line break
+        selection.Find.Execute Replace:=wdReplaceAll
+    
+        ' Cari double whitespace
+        With selection.Find
+            .Text = "  " ' Cari double whitespace
+            .replacement.Text = " " ' Ganti dengan single whitespace
+        End With
+    
+        ' Ganti double whitespace dengan single whitespace
+        selection.Find.Execute Replace:=wdReplaceAll
+    Next i
+End Sub
+
