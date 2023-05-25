@@ -1,0 +1,135 @@
+Sub HapusTandaPipa()
+    Dim doc As Document
+    Dim selection As range
+    Dim i As Integer
+    
+    Set doc = ActiveDocument
+    Set selection = doc.Content
+    
+    For i = 1 To 1
+        selection.Find.ClearFormatting
+        selection.Find.replacement.ClearFormatting
+        
+        With selection.Find
+            .Text = "|  |"
+            .replacement.Text = "| |"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = "| |"
+            .replacement.Text = "|ZZ|"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = "| "
+            .replacement.Text = "|"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = " |"
+            .replacement.Text = "|"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = "|XX|"
+            .replacement.Text = "|I|"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = "|xx|"
+            .replacement.Text = "|i|"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+        With selection.Find
+            .Text = "|ZZ|"
+            .replacement.Text = "| |"
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = True
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+    
+        With selection.Find
+            .Text = "|"
+            .replacement.Text = ""
+            .Forward = True
+            .Wrap = wdFindContinue
+            .Format = False
+            .MatchCase = False
+            .MatchWholeWord = False
+            .MatchWildcards = False
+            .MatchSoundsLike = False
+            .MatchAllWordForms = False
+        End With
+
+        selection.Find.Execute Replace:=wdReplaceAll
+        
+    Next i
+End Sub
+
