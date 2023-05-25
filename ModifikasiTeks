@@ -1,0 +1,59 @@
+Sub ModifikasiTeks()
+    Dim doc As Document
+    Dim para As Paragraph
+    Dim parap As Paragraph
+    Dim rng As range
+    Dim levelNumber As Integer
+    Dim countPara As Integer
+    Dim i As Long
+    Dim j As Long
+    Dim regex As Object
+    Dim regExp As Object
+    Dim newText As String
+
+    'Atur dokumen aktif
+    Set doc = ActiveDocument
+
+    'Inisialisasi objek Regex
+    Set regex = CreateObject("VBScript.RegExp")
+    regex.Global = True
+
+    'Set pola regex untuk mencocokkan karakter tunggal
+    regex.Pattern = "[\w]"
+
+    Set regExp = CreateObject("VBScript.RegExp")
+    regExp.Pattern = "^(?!.*\|).{1,49}$"
+
+    'Loop melalui setiap paragraf
+    countPara = doc.Paragraphs.Count
+    For i = 1 To countPara
+        j = i + doc.Paragraphs.Count - countPara
+        Set para = doc.Paragraphs(j)
+        Set rng = para.range
+
+        'MsgBox "Nomor Paragraf: " & para.Range.Paragraphs(1).Range.ListFormat.ListString & vbCrLf & _
+                "Teks Paragraf: " & Doc.Paragraphs.Count & rng.Text & para.Range.Text, vbInformation, "Cek Struktur Paragraf"
+
+        If regExp.Test(para.range.Text) Then
+            levelNumber = para.range.ListFormat.ListLevelNumber
+            'MsgBox rng & levelNumber, vbInformation, "Alert"
+            'MsgBox "Gaya paragraf: " & rng.ParagraphFormat.Style, vbInformation, "Cek Gaya Paragraf"
+            'Ubah teks menjadi "Teks baru" diapit dengan tanda "|"
+            newText = rng.Text
+            
+            newText = regex.Replace(newText, "|$&|")
+            newText = Replace(newText, "|I|", "|XX|")
+            newText = Replace(newText, "|i|", "|xx|")
+            newText = Replace(newText, vbCrLf, "") ' Menghapus line break
+            On Error Resume Next
+            rng.Text = newText
+
+            'MsgBox rng & levelNumber, vbInformation, "Alert"
+
+            'Perbarui ListLevelNumber
+            para.range.ListFormat.ListLevelNumber = levelNumber
+
+        End If
+    Next i
+End Sub
+
