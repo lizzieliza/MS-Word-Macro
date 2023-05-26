@@ -1,0 +1,150 @@
+Sub TambahkanPipa()
+    Dim doc As Document
+    Dim i As Integer
+    Dim dari(70) As Variant
+    Dim jadi(70) As Variant
+    Dim range As range
+    
+    ' Mendapatkan dokumen aktif
+    Set doc = ActiveDocument
+    
+    ' Array dari kata-kata yang akan diganti
+dari(0) = "bab iii"
+dari(1) = "bab ii"
+dari(2) = "bab i"
+dari(3) = "latar belakang"
+dari(4) = "pendahuluan"
+dari(5) = "rumusan masalah"
+dari(6) = "tujuan penelitian"
+dari(7) = "manfaat penelitian"
+dari(8) = "sistematika penulisan"
+dari(9) = "tinjauan pustaka"
+dari(10) = "landasan teori"
+dari(11) = "hasil dan pembahasan"
+dari(12) = "penutup"
+dari(13) = "kesimpulan dan saran"
+dari(14) = "kesimpulan"
+dari(15) = "saran"
+dari(16) = "asumsi klasik"
+dari(17) = "regresi linier berganda"
+dari(18) = "regresi linear berganda"
+dari(19) = "kerangka berpikir"
+dari(20) = "kerangka pemikiran"
+dari(21) = "hipotesis"
+dari(22) = "normalitas"
+dari(23) = "heroskedastisitas"
+dari(24) = "validitas"
+dari(25) = "reliabilitas"
+dari(26) = "reliabel"
+dari(27) = "uji f"
+dari(28) = "uji t"
+dari(29) = "linearitas"
+dari(30) = "multikolinearitas"
+dari(31) = "linieritas"
+dari(32) = "multikolinieritas"
+dari(33) = "bab iv"
+dari(34) = "bab v"
+dari(35) = "bab vi"
+dari(36) = "daftar pustaka"
+dari(37) = "lampiran"
+dari(38) = "autokorelasi"
+dari(39) = "metode penelitian"
+dari(40) = "metodologi penelitian"
+dari(41) = "obyek penelitian"
+dari(42) = "objek penelitian"
+dari(43) = "populasi"
+dari(44) = "sampel"
+dari(45) = "metode analisis data"
+dari(46) = "metode pengumpulan data"
+dari(47) = "spesifikasi penelitian"
+dari(48) = "jenis penelitian"
+dari(49) = "sumber data"
+dari(50) = "jenis data"
+dari(51) = "perumusan masalah"
+dari(52) = "batasan masalah"
+dari(53) = "pembatasan masalah"
+dari(54) = "lokasi penelitian"
+dari(55) = "waktu penelitian"
+dari(56) = "uji"
+
+    ' Array kata-kata pengganti
+jadi(0) = "|B|A|B| |XX|XX|XX|"
+jadi(1) = "|B|A|B| |XX|XX|"
+jadi(2) = "|B|A|B| |XX|"
+jadi(3) = "l|a|t|a|r| |b|e|l|a|k|a|n|g|"
+jadi(4) = "p|e|n|d|a|h|u|l|u|a|n|"
+jadi(5) = "r||u||m||u||s||a||n| |m||a||s||a||l||a||h|"
+jadi(6) = "t||u||j||u||a||n| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(7) = "m||a||n||f||a||a||t| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(8) = "s||xx||s||t||e||m||a||t||xx||k||a| |p||e||n||u||l||xx||s||a||n|"
+jadi(9) = "t||xx||n||j||a||u||a||n| |p||u||s||t||a||k||a|"
+jadi(10) = "l||a||n||d||a||s||a||n| |t||e||o||r||xx|"
+jadi(11) = "h||a||s||xx||l| |d||a||n| |p||e||m||b||a||h||a||s||a||n|"
+jadi(12) = "p||e||n||u||t||u||p|"
+jadi(13) = "k||e||s||xx||m||p||u||l||a||n| |d||a||n| |s||a||r||a||n|"
+jadi(14) = "k||e||s||xx||m||p||u||l||a||n|"
+jadi(15) = "s||a||r||a||n|"
+jadi(16) = "a||s||u||m||s||xx| |k||l||a||s||xx||k|"
+jadi(17) = "r||e||g||r||e||s||xx| |l||xx||n||xx||e||r| |b||e||r||g||a||n||d||a|"
+jadi(18) = "r||e||g||r||e||s||xx| |l||xx||n||e||a||r| |b||e||r||g||a||n||d||a|"
+jadi(19) = "k||e||r||a||n||g||k||a| |b||e||r||p||xx||k||xx||r|"
+jadi(20) = "k||e||r||a||n||g||k||a| |p||e||m||xx||k||xx||r||a||n|"
+jadi(21) = "h||xx||p||o||t||e||s||xx||s|"
+jadi(22) = "n||o||r||m||a||l||xx||t||a||s|"
+jadi(23) = "h||e||r||o||s||k||e||d||a||s||t||xx||s||xx||t||a||s|"
+jadi(24) = "v||a||l||xx||d||xx||t||a||s|"
+jadi(25) = "r||e||l||xx||a||b||xx||l||xx||t||a||s|"
+jadi(26) = "r||e||l||xx||a||b||e||l|"
+jadi(27) = "u||j||xx| |f|"
+jadi(28) = "u||j||xx| |t|"
+jadi(29) = "l||xx||n||e||a||r||xx||t||a||s|"
+jadi(30) = "m||u||l||t||xx||k||o||l||xx||n||e||a||r||xx||t||a||s|"
+jadi(31) = "l||xx||n||xx||e||r||xx||t||a||s|"
+jadi(32) = "m||u||l||t||xx||k||o||l||xx||n||xx||e||r||xx||t||a||s|"
+jadi(33) = "|B||A||B| |xx||V|"
+jadi(34) = "|B||A||B| |V|"
+jadi(35) = "|B||A||B| |V||xx|"
+jadi(36) = "d||a||f||t||a||r| |p||u||s||t||a||k||a|"
+jadi(37) = "l||a||m||p||xx||r||a||n|"
+jadi(38) = "a||u||t||o||k||o||r||e||l||a||s||xx|"
+jadi(39) = "m||e||t||o||d||e| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(40) = "m||e||t||o||d||o||l||o||g||xx| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(41) = "o||b||y||e||k| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(42) = "o||b||j||e||k| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(43) = "p||o||p||u||l||a||s||xx|"
+jadi(44) = "s||a||m||p||e||l|"
+jadi(45) = "m||e||t||o||d||e| |a||n||a||l||xx||s||xx||s| |d||a||t||a|"
+jadi(46) = "m||e||t||o||d||e| |p||e||n||g||u||m||p||u||l||a||n| |d||a||t||a|"
+jadi(47) = "s||p||e||s||xx||f||xx||k||a||s||xx| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(48) = "j||e||n||xx||s| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(49) = "s||u||m||b||e||r| |d||a||t||a|"
+jadi(50) = "j||e||n||xx||s| |d||a||t||a|"
+jadi(51) = "p||e||r||u||m||u||s||a||n| |m||a||s||a||l||a||h|"
+jadi(52) = "b||a||t||a||s||a||n| |m||a||s||a||l||a||h|"
+jadi(53) = "p||e||m||b||a||t||a||s||a||n| |m||a||s||a||l||a||h|"
+jadi(54) = "l||o||k||a||s||xx| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(55) = "w||a||k||t||u| |p||e||n||e||l||xx||t||xx||a||n|"
+jadi(56) = "u||j||xx|"
+
+    
+    ' Mengiterasi melalui seluruh teks dalam dokumen
+    For Each range In doc.StoryRanges
+        ' Mencari dan mengganti kata yang cocok dengan pola
+        For i = LBound(dari) To UBound(dari)
+            ' Menentukan pola pencarian
+            With range.Find
+                .Text = dari(i)
+                .replacement.Text = jadi(i)
+                .MatchCase = False
+                .MatchWholeWord = True
+                .MatchWildcards = False
+                .Execute Replace:=wdReplaceAll
+            End With
+        Next i
+    Next range
+    
+    ' Menampilkan pesan setelah selesai
+    MsgBox "Penggantian kata selesai."
+End Sub
+
+
